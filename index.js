@@ -1,11 +1,7 @@
 //Escribe una función llamada longitud que reciba como parámetro de entrada una cadena de texto y devuelva el número de letras que tiene.
 
 function longitud(cadena){
-    let resultado = -1;
-    if(isNaN(cadena)){
-        resultado = cadena.length;
-    }
-    return resultado;
+    return isNaN(cadena) ? cadena.length : -1;
 }
 
 console.log(longitud("ana"));
@@ -237,4 +233,20 @@ let listaCompra = ["leche","huevo","piña"];
 //Escribe una función llamada informacionProducto que tome un objeto con información de un producto (nombre, precio, categoría, etc.) 
 //y utilice un template literal para generar una descripción del producto. Luego, muestra esa descripción en la consola.
 
+function informacionProducto(nombre,precio,categoria){
+    return `El producto ${nombre} de la categoria ${categoria} tiene un precio de ${precio}€.`;
+}
 
+console.log(informacionProducto("Xiaomi",190,"Redmi"));
+
+//Implementa una función llamada validarDNI que tome un número de DNI (con o sin letra) como argumento y determine si es un DNI válido.
+//La función debe calcular la letra correspondiente al número y compararla con la letra proporcionada (si se proporciona). Devuelve true si es válido y false si no lo es.
+
+function validarDNI(dni){
+    let letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+
+    return (dni.length == 9 && !isNaN(parseInt(dni.substring(0,8))) && isNaN(dni.charAt(dni.length-1))) 
+        &&  (letras[parseInt(dni.substring(0,8))%23] == dni.charAt(dni.length-1));
+}
+
+console.log(validarDNI("24483609V"));
